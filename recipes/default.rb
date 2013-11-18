@@ -9,4 +9,4 @@ apt_repository 'passenger' do
 end
 
 package 'nginx-extras'
-pacakge 'passenger'
+package 'passenger'
