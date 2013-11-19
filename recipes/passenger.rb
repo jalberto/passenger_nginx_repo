@@ -33,7 +33,7 @@ node['passenger_nginx_repo']['apps'].each do |app|
       listen_port: app['listen_port'],
       ssl_key:     app['ssl_key'],
       ssl_cert:    app['ssl_cert'],
-      dev_mode:    app['dev_mode']
+      rails_env:   app['rails_env']
     )
     notifies :reload, 'service[nginx]'
   end

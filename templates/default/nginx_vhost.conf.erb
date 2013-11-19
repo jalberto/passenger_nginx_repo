@@ -4,7 +4,7 @@ server {
 
   root <%= @root_path %>;
   passenger_enabled on;
-  rails_env <%= @dev_mode ? 'development' : 'production' %>;
+  rails_env <%= @rails_env %>;
 
 <% if @ssl_key && @ssl_cert -%>
   ssl on;
@@ -28,6 +28,7 @@ server {
 
   location / {
     passenger_enabled on;
+    rails_env <%= @rails_env %>;
     try_files /system/maintenance.html
               $uri $uri/index.html $uri.html
               @app;

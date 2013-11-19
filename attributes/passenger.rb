@@ -9,3 +9,8 @@ node.default['passenger_nginx_repo']['max_instances_per_app'] = 0
 node.default['passenger_nginx_repo']['pool_idle_time']        = 300
 node.default['passenger_nginx_repo']['max_requests']          = 0
 node.default['passenger_nginx_repo']['gem_binary']            = nil
+
+node.default['passenger_nginx_repo']['listen_port']           = 80
+node.default['passenger_nginx_repo']['ssl_key']               = false
+node.default['passenger_nginx_repo']['ssl_cert']              = false
+node.default['passenger_nginx_repo']['rails_env']             = 'production'
