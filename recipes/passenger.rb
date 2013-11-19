@@ -37,4 +37,8 @@ node['passenger_nginx_repo']['apps'].each do |app|
     )
     notifies :reload, 'service[nginx]'
   end
+  execute "enable vhost" do
+    command "ln -s #{File.join(node['nginx']['dir'], 'sites-available', app['appname'])} #{File.join(node['nginx']['dir'], 'sites-enabled', app['appname'])}"
+    only_if { ::File.exists?(File.join(node['nginx']['dir'], 'sites-available', app['appname'])) }
+  end
 end
