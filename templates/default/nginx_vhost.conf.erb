@@ -5,6 +5,7 @@ server {
   root <%= @root_path %>;
   passenger_enabled on;
   rails_env <%= @rails_env %>;
+  passenger_ruby /usr/local/rvm/wrappers/ruby-<%= @ruby %>/ruby;
 
 <% if @ssl_key && @ssl_cert -%>
   ssl on;
@@ -29,6 +30,7 @@ server {
   location / {
     passenger_enabled on;
     rails_env <%= @rails_env %>;
+    passenger_ruby /usr/local/rvm/wrappers/ruby-<%= @ruby %>/ruby;
   }
 
   location ~ ^/(assets)/ {
