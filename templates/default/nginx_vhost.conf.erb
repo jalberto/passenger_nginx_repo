@@ -21,7 +21,7 @@ server {
   rewrite_log on;
 
   # use the application's 500.html page
-  error_page 500 502 503 504 /500.html;
+  # error_page 500 502 503 504 /500.html;
 
   # allow clients to upload large files (if necessary)
   client_max_body_size 4G;
@@ -29,9 +29,6 @@ server {
   location / {
     passenger_enabled on;
     rails_env <%= @rails_env %>;
-    try_files /system/maintenance.html
-              $uri $uri/index.html $uri.html
-              @app;
   }
 
   location ~ ^/(assets)/ {
