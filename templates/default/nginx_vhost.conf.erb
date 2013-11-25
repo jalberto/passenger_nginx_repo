@@ -16,8 +16,9 @@ server {
   ssl_prefer_server_ciphers on;
 <% end -%>
 
-  access_log <%= @log_dir %>/<%= @appname %>-access.log combined;
-  error_log  <%= @log_dir %>/<%= @appname %>-error.log;
+  <% ssl_str = @ssl_key ? '_ssl' : '' %>
+  access_log <%= @log_dir %>/<%= @appname + ssl_str %>-access.log combined;
+  error_log  <%= @log_dir %>/<%= @appname + ssl_str %>-error.log;
 
   rewrite_log on;
 

@@ -20,7 +20,8 @@ template "/etc/nginx/conf.d/passenger.conf" do
 end
 
 node['passenger_nginx_repo']['apps'].each do |app|
-  template( File.join(node["nginx"]["dir"], "sites-available", app["appname"]) ) do
+  ssl_str = app['ssl_key'] ? '_ssl' : ''
+  template( File.join(node["nginx"]["dir"], "sites-available", app["appname"] + ssl_str) ) do
     source 'nginx_vhost.conf.erb'
     owner  'root'
     group  'root'
