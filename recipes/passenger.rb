@@ -43,6 +43,6 @@ node['passenger_nginx_repo']['apps'].each do |app|
   link "#{node['nginx']['dir']}/sites-enabled/#{app['appname']}#{ssl_str}" do
     to "#{node['nginx']['dir']}/sites-available/#{app['appname']}#{ssl_str}"
     not_if { ::File.symlink?(File.join(node['nginx']['dir'], 'sites-enabled', app['appname'] + ssl_str)) }
-    only_if { ::File.exists?(File.join(node['nginx']['dir'], 'sites-available', app['appname'] + ssl_srt)) }
+    only_if { ::File.exists?(File.join(node['nginx']['dir'], 'sites-available', app['appname'] + ssl_str)) }
   end
 end
