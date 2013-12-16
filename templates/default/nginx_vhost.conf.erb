@@ -34,9 +34,11 @@ server {
     passenger_ruby /usr/local/rvm/wrappers/ruby-<%= @ruby %>/ruby;
   }
 
+  <% if @rails_env != 'development' %>
   location ~ ^/(assets)/ {
     gzip_static on;
     expires max;
     add_header Cache-Control public;
   }
+  <% end %>
 }
